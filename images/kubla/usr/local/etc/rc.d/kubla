@@ -1,0 +1,25 @@
+#!/bin/sh
+
+. /etc/rc.subr
+
+name="kubla"
+rcvar="${name}_enable"
+load_rc_config $name
+kubla_cmd="/usr/local/bin/kubla"
+
+pidfile="/var/run/${name}.pid"
+
+command="/usr/sbin/daemon"
+command_args="-P ${pidfile} -r -f ${kubla_cmd}"
+stop_postcmd="stop_kubla"
+start_precmd="/usr/local/bin/go build -o /usr/local/bin/kubla /src/main.go"
+
+stop_kubla()
+{
+	if [ -e "${pidfile}" ]; then
+		echo "stop daemon"
+		kill -s TERM `cat ${pidfile}`
+	fi
+}
+
+run_rc_command "$1"
