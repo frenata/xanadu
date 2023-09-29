@@ -12,7 +12,7 @@ pidfile="/var/run/${name}.pid"
 command="/usr/sbin/daemon"
 command_args="-P ${pidfile} -r -f ${kubla_cmd}"
 stop_postcmd="stop_kubla"
-start_precmd="/usr/local/bin/go build -o /usr/local/bin/kubla /src/main.go"
+start_precmd="cd /src && /usr/local/bin/go build -o /usr/local/bin/kubla ."
 
 stop_kubla()
 {

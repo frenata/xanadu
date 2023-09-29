@@ -1,6 +1,6 @@
 PKG lang/go
 
 MOUNT /home/frenata/src/coleridge/src /src nullfs ro 0 0
-#CMD go run /src/main.go
 CP usr /
 SYSRC kubla_enable=YES
+SERVICE kubla restart
