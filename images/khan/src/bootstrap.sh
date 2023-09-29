@@ -8,11 +8,13 @@ if [ -z "$(ls -A $DATA_DIR)" ]; then
 	COLD=true
 fi
 
-cp /src/postgresql.conf $DATA_DIR
-cp /src/pg_hba.conf $DATA_DIR
+cp /src/postgresql.conf $DATA_DIR/postgresql.conf
+cp /src/pg_hba.conf $DATA_DIR/pg_hba.conf
 
 if [ "$COLD" == "true" ]; then
 	service postgresql start
 else
 	service postgresql restart
 fi
+
+psql -U postgres -c "alter user postgres password '${db_pass}'"

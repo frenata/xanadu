@@ -1,6 +1,8 @@
+ARG db_pass=
 PKG lang/go
 
 MOUNT /home/frenata/src/coleridge/src /src nullfs ro 0 0
 CP usr /
+RENDER /usr/local/etc/rc.d/kubla
 SYSRC kubla_enable=YES
 SERVICE kubla restart

@@ -1,11 +1,9 @@
-CONFIG set sysvshm new
-CONFIG set sysvsem new
-CONFIG set sysvmsg new
-
+ARG db_pass=
 PKG postgresql15-server
 
 SYSRC postgresql_enable=YES
 
 CP src /
+RENDER /src/bootstrap.sh
 CMD /src/bootstrap.sh
 CMD /src/migrate.sh

@@ -2,7 +2,7 @@ package main
 
 import "log"
 import "fmt"
-//import "strconv"
+import "os"
 import "net/http"
 import "database/sql"
 import _ "github.com/lib/pq"
@@ -11,7 +11,7 @@ var pool *sql.DB
 
 func main() {
 	var err error
-	pool, err = sql.Open("postgres", "postgres://postgres@10.0.10.3/postgres?sslmode=disable")
+	pool, err = sql.Open("postgres", fmt.Sprintf("postgres://postgres:%v@10.0.10.3/postgres?sslmode=disable", os.Getenv("DB_PASS")))
 	if err != nil {
 		log.Fatal(err)
 	}

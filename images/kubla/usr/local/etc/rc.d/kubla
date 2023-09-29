@@ -6,6 +6,7 @@ name="kubla"
 rcvar="${name}_enable"
 load_rc_config $name
 kubla_cmd="/usr/local/bin/kubla"
+kubla_env="DB_PASS=${db_pass}"
 
 pidfile="/var/run/${name}.pid"
 
