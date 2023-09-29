@@ -2,6 +2,8 @@
 
 . /etc/rc.subr
 
+# PROVIDE: kubla
+
 name="kubla"
 rcvar="${name}_enable"
 load_rc_config $name
