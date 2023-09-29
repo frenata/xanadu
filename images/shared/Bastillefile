@@ -1,0 +1,3 @@
+CONFIG set sysvshm new
+CONFIG set sysvsem new
+CONFIG set sysvmsg new
