@@ -1,0 +1,11 @@
+CONFIG set sysvshm new
+CONFIG set sysvsem new
+CONFIG set sysvmsg new
+
+PKG postgresql15-server
+
+SYSRC postgresql_enable=YES
+
+CP src /
+CMD /src/bootstrap.sh
+CMD /src/migrate.sh
